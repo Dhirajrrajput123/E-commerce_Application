@@ -28,13 +28,12 @@ public class Usersd {
 	public Usersd() {
 		super();
 	}
-	public Usersd(String name, String username, String password, String email, String role) {
+	public Usersd(String name, String username, String password, String email) {
 		super();
 		this.name = name;
 		this.username = username;
 		this.password = password;
 		this.email = email;
-		this.role = role;
 	}
 	public int getId() {
 		return id;

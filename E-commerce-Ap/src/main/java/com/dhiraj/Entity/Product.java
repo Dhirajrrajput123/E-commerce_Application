@@ -19,6 +19,7 @@ public class Product {
 	private String name;
 	private int price;
 	private int quantity;
+	private Boolean present;
 	
 	@ManyToMany(cascade = CascadeType.ALL)
 	private List<Cart> carts;
@@ -27,13 +28,31 @@ public class Product {
 	
 	public Product(String name, int price, int quantity) {
 		super();
+		
 		this.name = name;
 		this.price = price;
 		this.quantity = quantity;
 		this.carts=new ArrayList<>();
+		if(quantity>0) {
+			this.present=true;			
+		}
+		else {
+			this.present=false;
+		}
+		System.out.println("hello i am dhiraj");
 	}
 	public Product() {
 		super();
+		System.out.println("hello i am not dhiraj");
+	}
+	
+	
+	
+	public Boolean getPresent() {
+		return present;
+	}
+	public void setPresent(Boolean present) {
+		this.present = present;
 	}
 	public int getPid() {
 		return pid;

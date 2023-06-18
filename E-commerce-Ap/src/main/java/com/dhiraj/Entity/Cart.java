@@ -9,6 +9,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinColumns;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 
@@ -21,17 +22,47 @@ public class Cart {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int cId;
 	
+	private Boolean cPresent;
+	
 	@ManyToMany(mappedBy = "carts",cascade = CascadeType.PERSIST)
 	private List<Product> products;
 	
-	@OneToOne(cascade = CascadeType.PERSIST,fetch = FetchType.EAGER)
-	@JoinColumn(name = "user_id")
+	@ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+	@JoinColumn(name = "id")
 	private Usersd user;
 
 	public Cart() {
 		super();
 		this.products=new ArrayList<>();
+		this.cPresent=true;	
+		
 	}
+
+
+
+	public Boolean getcPresent() {
+		return cPresent;
+	}
+
+
+
+	public void setcPresent(Boolean cPresent) {
+		this.cPresent = cPresent;
+	}
+
+
+
+	public List<Product> getProducts() {
+		return products;
+	}
+
+
+
+	public void setProducts(List<Product> products) {
+		this.products = products;
+	}
+
+
 
 	public int getcId() {
 		return cId;

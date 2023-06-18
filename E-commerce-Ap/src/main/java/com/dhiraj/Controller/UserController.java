@@ -6,6 +6,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,8 +27,20 @@ public class UserController {
 	@Autowired
 	private PasswordEncoder passwordEncoder;
 	
-	@GetMapping("/Users")
+	@PostMapping("/Users")
 	public ResponseEntity<Usersd> saveUserController(@RequestBody Usersd user) throws UserException{
+		System.out.println(user);
+		user.setPassword(passwordEncoder.encode(user.getPassword()));
+		user.setRole("ROLE_USER");
+		Usersd saveuser=uservices.saveUser(user);
+		
+		return new ResponseEntity<Usersd>(saveuser, HttpStatus.ACCEPTED);
+	}
+	
+	@PostMapping("/UsersRoleAdmin/{pass}")
+	public ResponseEntity<Usersd> saveAdminController(@RequestBody Usersd user,@PathVariable("pass") int pass) throws UserException{
+		System.out.println(user+" "+pass);
+		if(pass!=12345) throw new UserException("Wrong Enter Path varable to save User role as ADMIN");
 		user.setPassword(passwordEncoder.encode(user.getPassword()));
 		user.setRole("ROLE_ADMIN");
 		Usersd saveuser=uservices.saveUser(user);
@@ -49,14 +62,4 @@ public class UserController {
 		return new ResponseEntity<String>("hello for Admin And User ", HttpStatus.ACCEPTED);
 	}
 	
-//	@GetMapping("/login")
-//	public ResponseEntity<String> loginUser(Authentication auth) throws UserException{
-//		String username=auth.getUsername();
-//		
-//         System.out.println(username);
-//         
-////         Usersd saveuser=uservices.findByUsername(username);
-//		
-//		return new ResponseEntity<>(username, HttpStatus.ACCEPTED);
-//	}
 }
