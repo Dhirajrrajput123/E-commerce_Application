@@ -31,7 +31,40 @@ public class GlobleExceptionHandler {
 	      err.setMsg(es.getMessage());
 	      err.setDesc(req.getDescription(false));
 	      
-	      return new ResponseEntity<MyErrorClass>(err, HttpStatus.FORBIDDEN);
+	      return new ResponseEntity<MyErrorClass>(err, HttpStatus.BAD_REQUEST);
+	}
+	
+	@ExceptionHandler(ProductException.class)
+	public ResponseEntity<MyErrorClass> exceptionHandler(ProductException es,WebRequest req){
+		
+		MyErrorClass err=new MyErrorClass();
+	      err.setDate(LocalDateTime.now());
+	      err.setMsg(es.getMessage());
+	      err.setDesc(req.getDescription(false));
+	      
+	      return new ResponseEntity<MyErrorClass>(err, HttpStatus.BAD_REQUEST);
+	}
+	
+	@ExceptionHandler(OrderException.class)
+	public ResponseEntity<MyErrorClass> exceptionHandler(OrderException es,WebRequest req){
+		
+		MyErrorClass err=new MyErrorClass();
+	      err.setDate(LocalDateTime.now());
+	      err.setMsg(es.getMessage());
+	      err.setDesc(req.getDescription(false));
+	      
+	      return new ResponseEntity<MyErrorClass>(err, HttpStatus.BAD_REQUEST);
+	}
+	
+	@ExceptionHandler(CardException.class)
+	public ResponseEntity<MyErrorClass> exceptionHandler(CardException es,WebRequest req){
+		
+		MyErrorClass err=new MyErrorClass();
+	      err.setDate(LocalDateTime.now());
+	      err.setMsg(es.getMessage());
+	      err.setDesc(req.getDescription(false));
+	      
+	      return new ResponseEntity<MyErrorClass>(err, HttpStatus.BAD_REQUEST);
 	}
 	
 }

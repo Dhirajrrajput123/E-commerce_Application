@@ -2,30 +2,48 @@ package com.dhiraj.Config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
 
 @Configuration
 public class AppConfiguration {
 
 	@Bean
-	public SecurityFilterChain appAuthority(HttpSecurity http) throws Exception {
-		
-		  http
-	        .authorizeRequests(auth->auth
-	            .requestMatchers("/E-App/WelcomeForAll", "/E-App/Users").permitAll() // Allow access to public resources
-	            .requestMatchers("/E-App/WelcomeForAdmin").hasRole("ADMIN") // Allow access to "/admin/**" only for users with the "ADMIN" role
-	            .anyRequest().authenticated() // Require authentication for all other requests
-                  ).httpBasic();
+	public SecurityFilterChain springSecurityConfiguration(HttpSecurity http) throws Exception {
 
-	    return http.build();
-		
+		http
+		.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+		.and()
+		.csrf().disable()
+		.authorizeHttpRequests()
+		  .requestMatchers("/E-App/WelcomeForAll", "/E-App/Users","/E-App/UsersRoleAdmin/{pass}").permitAll() 
+          .requestMatchers("/E-App/WelcomeForAdmin").hasRole("ADMIN")
+          .anyRequest().authenticated() .and()
+		.addFilterAfter(new JwtTokenGeneratorFilter(), BasicAuthenticationFilter.class)
+		.addFilterBefore(new JwtTokenValidatorFilter(), BasicAuthenticationFilter.class)
+		.formLogin()
+		.and()
+		.httpBasic();
+
+		return http.build();
+
 	}
-	
+
 	@Bean
 	public PasswordEncoder passwordEncoder() {
+
 		return new BCryptPasswordEncoder();
+
 	}
+
 }
+
+	
+	
+	
+	
