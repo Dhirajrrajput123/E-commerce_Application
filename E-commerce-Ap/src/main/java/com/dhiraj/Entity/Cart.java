@@ -25,7 +25,7 @@ public class Cart {
 	private Boolean cPresent;
 	
 	@ManyToMany(mappedBy = "carts",cascade = CascadeType.PERSIST)
-	private List<Product> products;
+	private List<Product> products=new ArrayList<>();
 	
 	@ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
 	@JoinColumn(name = "id")
@@ -33,7 +33,6 @@ public class Cart {
 
 	public Cart() {
 		super();
-		this.products=new ArrayList<>();
 		this.cPresent=true;	
 		
 	}
@@ -70,14 +69,6 @@ public class Cart {
 
 	public void setcId(int cId) {
 		this.cId = cId;
-	}
-
-	public List<Product> getList() {
-		return products;
-	}
-
-	public void setList(List<Product> list) {
-		this.products = list;
 	}
 
 	public Usersd getUser() {

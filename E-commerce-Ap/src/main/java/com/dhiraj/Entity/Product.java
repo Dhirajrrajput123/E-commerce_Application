@@ -3,6 +3,8 @@ package com.dhiraj.Entity;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -22,7 +24,8 @@ public class Product {
 	private Boolean present;
 	
 	@ManyToMany(cascade = CascadeType.ALL)
-	private List<Cart> carts;
+	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+	private List<Cart> carts =new ArrayList<>();
 	
 	
 	
@@ -32,7 +35,7 @@ public class Product {
 		this.name = name;
 		this.price = price;
 		this.quantity = quantity;
-		this.carts=new ArrayList<>();
+//		this.carts=new ArrayList<>();
 		if(quantity>0) {
 			this.present=true;			
 		}

@@ -1,5 +1,7 @@
 package com.dhiraj.Controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -33,7 +35,7 @@ public class ProductControllerImpl implements ProductController{
 		
 		Product saveProduct=productServices.SaveProduct(product);
 		
-		return new ResponseEntity<Product>(saveProduct, HttpStatus.ACCEPTED);
+		return new ResponseEntity<Product>(saveProduct, HttpStatus.CREATED);
 	}
 
 	@Override
@@ -63,6 +65,14 @@ public class ProductControllerImpl implements ProductController{
 			
 		return new ResponseEntity<Product>(saveProduct, HttpStatus.ACCEPTED);
 	
+	}
+
+	@Override
+	@GetMapping("/realAll")
+	public ResponseEntity<List<Product>> findAllProductcont() throws ProductException {
+		
+		
+		return new ResponseEntity<>(productServices.findAllProduct(), HttpStatus.ACCEPTED);
 	}
 
 }

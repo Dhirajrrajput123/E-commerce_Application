@@ -1,5 +1,7 @@
 package com.dhiraj.Controller;
 
+import java.util.List;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -17,4 +19,6 @@ public interface ProductController {
 	public ResponseEntity<Product> updateProduct(ProductModel productModel, int id ) throws ProductException;
 	
 	public ResponseEntity<Product> readProduct(int id) throws ProductException;
+	
+	public  ResponseEntity<List<Product>> findAllProductcont() throws ProductException;
 }
