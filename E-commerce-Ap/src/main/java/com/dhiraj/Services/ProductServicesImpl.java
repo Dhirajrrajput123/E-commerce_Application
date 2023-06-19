@@ -1,5 +1,6 @@
 package com.dhiraj.Services;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -68,6 +69,16 @@ public class ProductServicesImpl  implements ProductServices{
 		if(product.isEmpty()) throw new ProductException("Product Not Present in this product id  **"+id+"** ");
 		
 		return product.get();
+	}
+
+	@Override
+	public List<Product> findAllProduct() throws ProductException {
+		
+		
+		List<Product> products=productDao.findAll();
+		if(products.isEmpty()) throw new ProductException("Product table is empty");
+		
+		return products;
 	}
 	
 	

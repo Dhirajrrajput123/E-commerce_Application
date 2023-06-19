@@ -34,7 +34,7 @@ public class UserController {
 		user.setRole("ROLE_USER");
 		Usersd saveuser=uservices.saveUser(user);
 		
-		return new ResponseEntity<Usersd>(saveuser, HttpStatus.ACCEPTED);
+		return new ResponseEntity<Usersd>(saveuser, HttpStatus.CREATED);
 	}
 	
 	@PostMapping("/UsersRoleAdmin/{pass}")

@@ -56,8 +56,8 @@ public class GlobleExceptionHandler {
 	      return new ResponseEntity<MyErrorClass>(err, HttpStatus.BAD_REQUEST);
 	}
 	
-	@ExceptionHandler(CardException.class)
-	public ResponseEntity<MyErrorClass> exceptionHandler(CardException es,WebRequest req){
+	@ExceptionHandler(CartException.class)
+	public ResponseEntity<MyErrorClass> exceptionHandler(CartException es,WebRequest req){
 		
 		MyErrorClass err=new MyErrorClass();
 	      err.setDate(LocalDateTime.now());
