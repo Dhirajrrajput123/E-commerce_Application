@@ -1,7 +1,7 @@
 # E-commerce_Application
 
 ## Introduction
-Welcome to our E-commerce Backend Project! This cutting-edge web application serves as the powerhouse behind our online store, ensuring a seamless shopping experience for our customers. Powered by Java, Spring Boot, and MySQL, our backend handles the essential functionalities and data management to keep our e-commerce platform running smoothly.
+Our E-commerce Backend Project is a state-of-the-art web application, providing an exceptional online shopping experience. With a focus on security, we use JWT tokens to ensure that our platform is fully protected and only authorized users can access it. Powered by Java, Spring Boot, and MySQL, our backend employs the DAO (Data Access Object) pattern, guaranteeing efficient data management and organization.
 
 ## Deplolyed App
 Not Deployee
