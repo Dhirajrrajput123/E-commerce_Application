@@ -1,7 +1,7 @@
 # E-commerce_Application
 
 ## Introduction
-A brief introduction of your project goes here. You may want to cover the purpose of your project, its core functionality, and what problems it solves.
+Welcome to our E-commerce Backend Project! This cutting-edge web application serves as the powerhouse behind our online store, ensuring a seamless shopping experience for our customers. Powered by Java, Spring Boot, and MySQL, our backend handles the essential functionalities and data management to keep our e-commerce platform running smoothly.
 
 ## Deplolyed App
 Not Deployee
@@ -36,31 +36,21 @@ Not Deployee
 
 ## How to Run:-
 ```bash
-git clone 
+git clone https://github.com/Dhirajrrajput123/E-commerce_Application.git 
 ```
+- Open folder in requested IDE like-STS, Eclipse, IntelliJ IDEA ...
+- Run the application
+
+## API End Points:-
+
 
 ## Usage
-Provide instructions and examples on how to use your project.
+The e-commerce website backend is the backbone of the online store, responsible for ensuring smooth functionality, secure data management, and seamless integration with various services to provide a robust and reliable shopping experience for customers.
 
-```bash
-# Example
-```
-
-Include screenshots as necessary.
-
-## APIs Used
-If your application relies on external APIs, document them and include any necessary links or references.
-
-## API Endpoints
-In case of Backend Applications provide a list of your API endpoints, methods, brief descriptions, and examples of request/response.
-GET /api/items - retrieve all items
-POST /api/items - create a new item
 
 
 ## Technology Stack
-List and provide a brief overview of the technologies used in the project.
-
-- Node.js
-- Express.js
-- MongoDB
-- Other libraries/modules
+- Java
+- Spring Boot
+- MySql
+- Security with JWT (JSON Web Tokens)
